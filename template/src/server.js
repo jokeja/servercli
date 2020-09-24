@@ -1,4 +1,3 @@
-const { arguments } = require('commander')
 const http = require('http')
 const utils = require('./lib/utils')
 
