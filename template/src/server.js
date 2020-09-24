@@ -2,7 +2,7 @@ const http = require('http')
 const utils = require('./lib/utils')
 
 let port = utils.findPort(process.argv)
-
+utils.initEnv(process.argv)
 let server = http.createServer((req, res) => {
   console.log(req.url)
   console.log(req.method)
@@ -19,3 +19,4 @@ let server = http.createServer((req, res) => {
   res.write('-----------------------')
   res.end()
 }).listen(port)
+console.log(process.env)

@@ -35,7 +35,8 @@ function writePkgJson(options, dirpath) {
             "@types/node": "^14.10.3"
         },
         "scripts": {
-            "start": "node ./src/server --port " + (options.port || 8888)
+            "pro": "node ./src/server --mode production --port " + (options.port || 8888),
+            "dev": "node ./src/server --port " + (options.port || 8888)
         },
     };
     fs_1.default.writeFileSync(path_1.default.join(dirpath, path_1.default.sep + "package.json"), JSON.stringify(pkg, null, 2));

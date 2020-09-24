@@ -6,7 +6,11 @@ const Minimist = require('minimist')
  */
 exports.findPort = function (argv) {
   let args = new Minimist(argv.splice(2), {})
-  console.log(args)
-  console.log(args.port)
   return args.port || 8888
+}
+
+// mode production正式环境
+exports.initEnv = function (argv) {
+  let args = new Minimist(argv.splice(2), {})
+  process.env.MODE_ENV = args.mode || 'development'
 }
