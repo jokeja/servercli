@@ -23,16 +23,20 @@ function writePkgJson (options: Package, dirpath: string) {
     name: options.appName,
     version: "0.1.0",
     private: true,
+    dependencies: {
+      "minimist": "^1.2.0"
+    },
     devDependencies: {
       "@types/node": "^14.10.3"
     },
     "scripts": {
-      "start": "node ./src/server"
+      "start": `node ./src/server --port ${options.port || 8888}`
     },
   }
   fs.writeFileSync(path.join(dirpath, `${path.sep}package.json`), JSON.stringify(pkg, null, 2))
 }
 interface Package {
-  appName: string
+  appName: string,
+  port: Number
 }
 export default { copyFilesFromDir, writePkgJson }

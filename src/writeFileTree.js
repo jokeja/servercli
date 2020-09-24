@@ -28,11 +28,14 @@ function writePkgJson(options, dirpath) {
         name: options.appName,
         version: "0.1.0",
         private: true,
+        dependencies: {
+            "minimist": "^1.2.0"
+        },
         devDependencies: {
             "@types/node": "^14.10.3"
         },
         "scripts": {
-            "start": "node ./src/server"
+            "start": "node ./src/server --port " + (options.port || 8888)
         },
     };
     fs_1.default.writeFileSync(path_1.default.join(dirpath, path_1.default.sep + "package.json"), JSON.stringify(pkg, null, 2));
